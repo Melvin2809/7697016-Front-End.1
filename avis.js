@@ -5,7 +5,7 @@ export function ajoutListenersAvis() {
 	for (let i = 0; i < piecesElements.length; i++) {
 		piecesElements[i].addEventListener("click", async function (event) {
 			const id = event.target.dataset.id;
-			const reponse = await fetch("http://localhost:8081/pieces/" + id + "/avis");
+			const reponse = await fetch("https://my-json-server.typicode.com/Melvin2809/7697016-Back-End.1/pieces/" + id + "/avis");
 			const avis = await reponse.json();
 			const pieceElement = event.target.parentElement;
 
@@ -40,7 +40,7 @@ export function ajoutListenerEnvoyerAvis() {
 		// Création de la charge utile au format JSON
 		const chargeUtile = JSON.stringify(avis);
 		// Appel de la fonction fetch avec toutes les informations nécessaires
-		fetch("http://localhost:8081/avis", {
+		fetch("https://my-json-server.typicode.com/Melvin2809/7697016-Back-End.1/avis", {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
 			body: chargeUtile
@@ -51,7 +51,7 @@ export function ajoutListenerEnvoyerAvis() {
 
 export async function afficherGraphiqueAvis() {
 	// Calcul du nombre total de commentaires par quantité d'étoiles attribuées
-	const avis = await fetch("http://localhost:8081/avis").then(avis => avis.json());
+	const avis = await fetch("https://my-json-server.typicode.com/Melvin2809/7697016-Back-End.1/avis").then(avis => avis.json());
 	const nb_commentaires = [0, 0, 0, 0, 0];
 
 	for (let commentaire of avis) {
